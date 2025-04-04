@@ -1,0 +1,14 @@
+ 
+class Node:
+    def __init__(self, data, next=None):
+        self.data = data
+        self.next = next
+
+
+def stringify(node):
+    value_list = []
+    while node is not None:
+        value_list.append(node.data)
+        node = node.next
+    value_list.append(None)
+    return ' -> '.join(str(elem) for elem in value_list)
