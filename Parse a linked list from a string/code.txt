@@ -1,0 +1,14 @@
+ 
+def linked_list_from_string(s: str):
+    if not s or s == 'None': 
+        return None
+    
+    elem_list = s.split(' -> ')[:-1]
+    for ind, elem in enumerate(elem_list):
+        if ind == 0: 
+            head = Node(int(elem))
+            head_ = head
+            continue
+        head.next = Node(int(elem))
+        head = head.next
+    return head_
