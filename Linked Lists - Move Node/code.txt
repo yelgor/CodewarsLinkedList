@@ -1,0 +1,17 @@
+class Node(object):
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+    
+class Context(object):
+    def __init__(self, source, dest):
+        self.source = source
+        self.dest = dest
+    
+def move_node(source, dest):
+    if source is None or dest is None and not(source is not None and dest is None):
+        raise Exception("error should be thrown when source list is empty")
+    source_ = source.next
+    dest_ = Node(source.data)
+    dest_.next = dest
+    return Context(source_, dest_) 
