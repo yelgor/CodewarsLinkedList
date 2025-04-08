@@ -1,0 +1,21 @@
+def swap_pairs(head):
+    if head is None or head.next is None:
+        return head
+
+    new_head = head.next
+    prev = None
+    current = head
+
+    while current and current.next:
+        nxt = current.next
+        next_pair = nxt.next
+
+        nxt.next = current
+        current.next = next_pair
+        if prev:
+            prev.next = nxt
+
+        prev = current
+        current = next_pair
+
+    return new_head 
