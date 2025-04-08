@@ -1,0 +1,26 @@
+def alternating_split(head):
+    if head is None or head.next is None:
+        raise ValueError("List must contain at least two nodes.")
+
+    a_dummy = Node(0)
+    b_dummy = Node(0)
+    a_tail = a_dummy
+    b_tail = b_dummy
+
+    current = head
+    is_a_turn = True
+
+    while current:
+        if is_a_turn:
+            a_tail.next = current
+            a_tail = a_tail.next
+        else:
+            b_tail.next = current
+            b_tail = b_tail.next
+        current = current.next
+        is_a_turn = not is_a_turn
+
+    a_tail.next = None
+    b_tail.next = None
+
+    return Context(a_dummy.next, b_dummy.next) 
