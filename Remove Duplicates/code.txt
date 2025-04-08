@@ -1,0 +1,27 @@
+class Node(object):
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+def remove_duplicates(head):
+    if head is None:
+        return None
+    
+    if head.next is None:
+        return head
+    
+    head_copy = head
+    while head_copy is not None:
+        data = head_copy.data
+        double_head = head_copy
+        
+        while double_head.data == data:
+            if double_head.next is None:
+                double_head = double_head.next
+                break
+            double_head = double_head.next
+        
+        head_copy.next = double_head
+        head_copy = head_copy.next
+    
+    return head 
