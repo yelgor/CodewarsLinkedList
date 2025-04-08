@@ -1,0 +1,26 @@
+""" For your information:
+class Node(object):
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+"""
+
+def sorted_insert(head, data):
+    if head is None:
+        return Node(data)
+    if data <= head.data: 
+        new_node = Node(data)
+        new_node.next = head
+        return new_node
+    
+    head_copy = head
+    while head_copy.next is not None and head_copy.next.data <= data:
+        if head_copy.next is None:
+            head_copy.next = Node(data)
+            return head
+        head_copy = head_copy.next
+    
+    new_node = Node(data)
+    new_node.next = head_copy.next
+    head_copy.next = new_node
+    return head 
